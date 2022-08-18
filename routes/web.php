@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\TextoController;
+use App\Http\Controllers\TreinoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,3 +24,4 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('texto', TextoController::class)->middleware(['auth']);
+Route::resource('treino', TreinoController::class)->middleware(['auth']);
