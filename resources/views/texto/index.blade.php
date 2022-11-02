@@ -5,7 +5,8 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Textos
+                    <div class="card-header">
+                        <h4 class="float-start" style="padding-top: 8px">Textos</h4>
                         <a href="{{ route('texto.create') }}" class="float-end"><button type="button" class="btn btn-success">Novo</button></a>
                     </div>
 

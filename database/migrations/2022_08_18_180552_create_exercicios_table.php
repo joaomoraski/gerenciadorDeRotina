@@ -15,7 +15,12 @@ class CreateExerciciosTable extends Migration
     {
         Schema::create('exercicios', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(\App\Models\Treino::class);
+            $table->string("nome");
+            $table->string("observacoes");
             $table->timestamps();
+
+            $table->foreign('treino_id')->references('id')->on('treinos');
         });
     }
 

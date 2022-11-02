@@ -19,6 +19,8 @@ class CreateTextosTable extends Migration
             $table->foreignIdFor(User::class)->nullable(false);
             $table->string("content")->nullable(false);
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

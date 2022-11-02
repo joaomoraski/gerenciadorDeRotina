@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Treino;
+use App\Models\TreinoPorSemana;
 use Illuminate\Http\Request;
 
-class TreinoController extends Controller
+class TreinoPorSemanaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,7 @@ class TreinoController extends Controller
      */
     public function index()
     {
-//        , ['textos' => $textos]
-        return view('treino.index');
-
+        //
     }
 
     /**
@@ -43,10 +41,10 @@ class TreinoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Treino  $treino
+     * @param  \App\Models\TreinoPorSemana  $treinoPorSemana
      * @return \Illuminate\Http\Response
      */
-    public function show(Treino $treino)
+    public function show(TreinoPorSemana $treinoPorSemana)
     {
         //
     }
@@ -54,10 +52,10 @@ class TreinoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Treino  $treino
+     * @param  \App\Models\TreinoPorSemana  $treinoPorSemana
      * @return \Illuminate\Http\Response
      */
-    public function edit(Treino $treino)
+    public function edit(TreinoPorSemana $treinoPorSemana)
     {
         //
     }
@@ -66,10 +64,10 @@ class TreinoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Treino  $treino
+     * @param  \App\Models\TreinoPorSemana  $treinoPorSemana
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Treino $treino)
+    public function update(Request $request, TreinoPorSemana $treinoPorSemana)
     {
         //
     }
@@ -77,10 +75,10 @@ class TreinoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Treino  $treino
+     * @param  \App\Models\TreinoPorSemana  $treinoPorSemana
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Treino $treino)
+    public function destroy(TreinoPorSemana $treinoPorSemana)
     {
         //
     }

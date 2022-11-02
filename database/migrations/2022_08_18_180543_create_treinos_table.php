@@ -16,9 +16,12 @@ class CreateTreinosTable extends Migration
         Schema::create('treinos', function (Blueprint $table) {
             $table->id();
             $table->string('label');
-            $table->string('muscularGroup');
-            $table->unsignedInteger('rate');
+            $table->foreignIdFor(\App\Models\Ciclo::class);
+            $table->string('grupoMuscular');
+            $table->unsignedInteger('nota');
             $table->timestamps();
+
+            $table->foreign('ciclo_id')->references('id')->on('ciclos');
         });
     }
 

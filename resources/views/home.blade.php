@@ -21,17 +21,17 @@
                                 </div>
                                 <div class="col">
                                     <a href="">
-                                        <button type="button" class="btn btn-outline-primary">Receitas</button>
+                                        <button type="button" class="btn btn-outline-primary btn-block">Receitas</button>
                                     </a>
                                 </div>
                                 <div class="col">
                                     <a href="">
-                                        <button type="button" class="btn btn-outline-primary">Faculdade</button>
+                                        <button type="button" class="btn btn-outline-primary btn-block">Faculdade</button>
                                     </a>
                                 </div>
                                 <div class="col pt-4">
-                                    <a href="">
-                                        <button type="button" class="btn btn-outline-primary">Treinos</button>
+                                    <a href="{{ route('treino.index') }}">
+                                        <button type="button" class="btn btn-outline-primary btn-block">Treinos</button>
                                     </a>
                                 </div>
                                 <div class="col pt-4">
@@ -41,12 +41,12 @@
                                 </div>
                                 <div class="col pt-4">
                                     <a href="">
-                                        <button type="button" class="btn btn-outline-primary">Entreterimento</button>
+                                        <button type="button" class="btn btn-outline-primary btn-block">Entreterimento</button>
                                     </a>
                                 </div>
                                 <div class="col pt-4">
                                     <a href="">
-                                        <button type="button" class="btn btn-outline-primary">Remedios</button>
+                                        <button type="button" class="btn btn-outline-primary btn-block">Remedios</button>
                                     </a>
                                 </div>
                             </div>
