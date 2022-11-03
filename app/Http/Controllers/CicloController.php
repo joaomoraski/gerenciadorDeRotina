@@ -24,7 +24,7 @@ class CicloController extends Controller
      */
     public function create()
     {
-        //
+        return view('ciclo.create');
     }
 
     /**
@@ -57,7 +57,7 @@ class CicloController extends Controller
      */
     public function edit(Ciclo $ciclo)
     {
-        //
+        return view('ciclo.edit', ['ciclo' => $ciclo]);
     }
 
     /**

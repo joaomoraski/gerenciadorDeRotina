@@ -15,8 +15,12 @@ class TreinoController extends Controller
     public function index()
     {
 //        , ['textos' => $textos]
-        return view('treino.index');
+        return view('gerenciaTreino.index');
 
+    }
+
+    public function configurar() {
+        return view('gerenciaTreino.configurar');
     }
 
     /**
@@ -26,7 +30,7 @@ class TreinoController extends Controller
      */
     public function create()
     {
-        //
+        return view('treino.create');
     }
 
     /**

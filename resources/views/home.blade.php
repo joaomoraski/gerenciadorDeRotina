@@ -30,7 +30,7 @@
                                     </a>
                                 </div>
                                 <div class="col pt-4">
-                                    <a href="{{ route('treino.index') }}">
+                                    <a href="{{ route('gerenciaTreino.index') }}">
                                         <button type="button" class="btn btn-outline-primary btn-block">Treinos</button>
                                     </a>
                                 </div>

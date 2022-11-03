@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ciclo;
+use App\Models\Exercicio;
 use App\Models\Semana;
+use App\Models\Treino;
 use Illuminate\Http\Request;
 
-class SemanaController extends Controller
+class GerenciaTreinoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +17,18 @@ class SemanaController extends Controller
      */
     public function index()
     {
-        //
+//        , ['textos' => $textos]
+        return view('gerenciaTreino.index');
+
+    }
+
+    public function configurar() {
+        $ciclos = Ciclo::paginate(10);
+        $semanas = Semana::paginate(10);
+        $treinos = Treino::paginate(10);
+        $exercicios = Exercicio::paginate(10);
+
+        return view('gerenciaTreino.configurar', ['ciclos' => $ciclos, 'semanas' => $semanas, 'treinos' => $treinos, 'exercicios' => $exercicios]);
     }
 
     /**
@@ -24,7 +38,7 @@ class SemanaController extends Controller
      */
     public function create()
     {
-        return view('semana.create');
+        //
     }
 
     /**
@@ -41,10 +55,10 @@ class SemanaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Semana  $semana
+     * @param  \App\Models\Treino  $treino
      * @return \Illuminate\Http\Response
      */
-    public function show(Semana $semana)
+    public function show(Treino $treino)
     {
         //
     }
@@ -52,10 +66,10 @@ class SemanaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Semana  $semana
+     * @param  \App\Models\Treino  $treino
      * @return \Illuminate\Http\Response
      */
-    public function edit(Semana $semana)
+    public function edit(Treino $treino)
     {
         //
     }
@@ -64,10 +78,10 @@ class SemanaController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Semana  $semana
+     * @param  \App\Models\Treino  $treino
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Semana $semana)
+    public function update(Request $request, Treino $treino)
     {
         //
     }
@@ -75,10 +89,10 @@ class SemanaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Semana  $semana
+     * @param  \App\Models\Treino  $treino
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Semana $semana)
+    public function destroy(Treino $treino)
     {
         //
     }
