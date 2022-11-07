@@ -6,6 +6,7 @@ use App\Http\Controllers\SemanaController;
 use App\Http\Controllers\GerenciaTreinoController;
 use App\Http\Controllers\TextoController;
 use App\Http\Controllers\TreinoController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,13 +20,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Auth::routes();
-
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/login', [App\Http\Controllers\LoginController::class, 'login'])->name('login');
+Route::get('/logout', [App\Http\Controllers\LoginController::class, 'logout'])->name('logout');
+Route::post('/login', [App\Http\Controllers\LoginController::class, 'authenticate'])->name('login.authenticate');
+Route::get('/resetPassword', [App\Http\Controllers\LoginController::class, 'getResetPassword'])->name('resetPassword');
+Route::get('/register', [App\Http\Controllers\LoginController::class, 'getRegister'])->name('register');
+Route::post('/register', [App\Http\Controllers\LoginController::class, 'registerUser'])->name('register.create');
+
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/texto', [TextoController::class, 'index'])->name('texto.index');
