@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CicloController;
 use App\Http\Controllers\ExercicioController;
+use App\Http\Controllers\RemedioController;
 use App\Http\Controllers\SemanaController;
 use App\Http\Controllers\GerenciaTreinoController;
 use App\Http\Controllers\TextoController;
@@ -83,3 +84,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/configurarTreinos', [GerenciaTreinoController::class, 'configurar'])->name('gerenciaTreino.configurar');
 });
 
+Route::middleware(['auth'])->group(function () {
+    Route::get('/remedio', [RemedioController::class, 'index'])->name('remedio.index');
+    Route::post('/remedio', [RemedioController::class, 'store'])->name('remedio.store');
+    Route::get('/remedio/create', [RemedioController::class, 'create'])->name('remedio.create');
+    Route::get('/remedio/{remedio}', [RemedioController::class, 'show'])->name('remedio.show');
+    Route::put('/remedio/{remedio}', [RemedioController::class, 'update'])->name('remedio.update');
+    Route::delete('/remedio/{remedio}', [RemedioController::class, 'destroy'])->name('remedio.destroy');
+    Route::get('/remedio/{remedio}/edit', [RemedioController::class, 'edit'])->name('remedio.edit');
+});

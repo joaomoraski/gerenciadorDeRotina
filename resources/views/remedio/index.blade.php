@@ -26,7 +26,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($textos as $key => $texto)
+                @foreach($remedios as $key => $remedio)
                     <tr>
                         <th scope="row">{{ $texto['id'] }}</th>
                         <td>{{ $texto['content'] }}</td>

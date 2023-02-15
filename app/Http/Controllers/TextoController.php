@@ -51,7 +51,7 @@ class TextoController extends Controller
         $validated = $request->safe()->only('content');
         $validated['user_id'] = auth()->user()->id;
         $texto = Texto::create($validated);
-        return redirect()->route('texto.show', ['texto' => $texto->id]);
+        return redirect()->route('texto.index');
     }
 
     /**
@@ -89,7 +89,7 @@ class TextoController extends Controller
         if ($texto->user_id == auth()->user()->id){
             $validated = $request->safe()->only('content');
             $texto->update($validated);
-            return redirect()->route('texto.show', ['texto' => $texto]);
+            return redirect()->route('texto.index');
         }
         return view('texto.index');
     }
