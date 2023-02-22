@@ -22,7 +22,7 @@ class RemedioController extends Controller
      */
     public function index()
     {
-        $remedios = Remedio::where('user_id', '=', auth()->id())->paginate(10);
+        $remedios = Remedio::where('user_id', '=', auth()->user()->id)->paginate(10);
 //        dd($remedios->get(0)->user->name); funciona
         return view('remedio.index', ['remedios' => $remedios]);
     }

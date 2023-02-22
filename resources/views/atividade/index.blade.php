@@ -7,7 +7,7 @@
 
     <div class="card Mar25">
         <div class="card-header">
-            <h4 class="float-start" style="padding-top: 8px">Remedios</h4>
+            <h4 class="float-start" style="padding-top: 8px">Atividades</h4>
             <a href="{{ route('remedio.create') }}" class="float-end">
                 <button type="button" class="btn btn-success">Novo</button>
             </a>
@@ -55,12 +55,12 @@
                             </button>
                             <div class="dropdown-menu text-center">
                                 <a href="{{ route('remedio.edit', $remedio['id']) }}"
-                                   class="bi bi-pencil text-black dropdown-item"> Alterar</a>
+                                   class="bi bi-pencil text-black"> Alterar</a>
                                 <form action="{{ route('remedio.destroy', ['remedio' => $remedio->id]) }}"
                                       method="post" id="form_{{ $remedio['id'] }}">
                                     @method("DELETE")
                                     @csrf
-                                    <a href="#" class="bi bi-trash3 text-black dropdown-item"
+                                    <a href="#" class="bi bi-trash3 text-black"
                                        onclick="document.getElementById('form_{{ $remedio['id'] }}').submit()">
                                         Excluir</a>
                                 </form>

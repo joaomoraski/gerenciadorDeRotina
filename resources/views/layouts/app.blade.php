@@ -170,16 +170,46 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="{{ route('texto.index') }}" class="nav-link">
+                        <a class="nav-link">
                             <i class="nav-icon fas fa-list"></i>
                             <p>
-                                Gerenciar tarefas
+                                Matriz de Eisenhower
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('atividade.geral') }}" class="nav-link">
+                                    <p>Geral</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                {{--                                {{route('medidasSuplemento.index')}}--}}
+                                <a href="" class="nav-link">
+                                    <p>Cadastro de tarefas</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                {{--                                {{route('medidasSuplemento.index')}}--}}
+                                <a href="" class="nav-link">
+                                    <p>Listagem</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        {{--                        {{ route('texto.index') }}--}}
+                        <a href="" class="nav-link">
+                            <i class="nav-icon fas fa-briefcase"></i>
+                            <p>
+                                Trabalho
                             </p>
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a href="{{ route('texto.index') }}" class="nav-link">
+                        <a class="nav-link">
                             <i class="nav-icon fas fa-syringe"></i>
                             <p>
                                 Gerenciar Suplementos
@@ -188,7 +218,12 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-{{--                                {{route('medidasSuplemento.index')}}--}}
+                                <a href="{{ route('texto.index') }}" class="nav-link">
+                                    <p>Geral</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                {{--                                {{route('medidasSuplemento.index')}}--}}
                                 <a href="" class="nav-link">
                                     <p>Medidas</p>
                                 </a>
@@ -224,7 +259,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="{{ route('remedio.index') }}" class="nav-link">
+                        <a class="nav-link">
                             <i class="nav-icon fas fa-pills"></i>
                             <p>
                                 Gerenciar remedios
@@ -233,7 +268,12 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-{{--                                {{route('medidasRemedio.index')}}--}}
+                                <a href="{{ route('remedio.index') }}" class="nav-link">
+                                    <p>Geral</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                {{--                                {{route('medidasRemedio.index')}}--}}
                                 <a href="" class="nav-link">
                                     <p>Medidas</p>
                                 </a>

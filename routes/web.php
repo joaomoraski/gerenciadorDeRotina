@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AtividadeController;
 use App\Http\Controllers\CicloController;
 use App\Http\Controllers\ExercicioController;
 use App\Http\Controllers\RemedioController;
@@ -92,4 +93,17 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/remedio/{remedio}', [RemedioController::class, 'update'])->name('remedio.update');
     Route::delete('/remedio/{remedio}', [RemedioController::class, 'destroy'])->name('remedio.destroy');
     Route::get('/remedio/{remedio}/edit', [RemedioController::class, 'edit'])->name('remedio.edit');
+});
+
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/atividade/geral', [AtividadeController::class, 'geral'])->name('atividade.geral');
+    Route::get('/atividade', [AtividadeController::class, 'index'])->name('atividade.index');
+    Route::post('/atividade', [AtividadeController::class, 'store'])->name('atividade.store');
+    Route::get('/atividade/create', [AtividadeController::class, 'create'])->name('atividade.create');
+    Route::get('/atividade/{atividade}', [AtividadeController::class, 'show'])->name('atividade.show');
+    Route::put('/atividade/{atividade}', [AtividadeController::class, 'update'])->name('atividade.update');
+    Route::put('/atividade/concluir/{atividade}', [AtividadeController::class, 'alterarStatus'])->name('atividade.alterarStatus');
+    Route::delete('/atividade/{atividade}', [AtividadeController::class, 'destroy'])->name('atividade.destroy');
+    Route::get('/atividade/{atividade}/edit', [AtividadeController::class, 'edit'])->name('atividade.edit');
 });
