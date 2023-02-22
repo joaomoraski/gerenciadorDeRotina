@@ -87,15 +87,15 @@
         <!-- Sidebar -->
         <div class="sidebar">
             <!-- Sidebar user panel (optional) -->
-{{--            <div class="user-panel mt-3 pb-3 mb-3 d-flex">--}}
-{{--                <div class="image">--}}
-{{--                    <img src="{{asset('vendor/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2"--}}
-{{--                         alt="User Image">--}}
-{{--                </div>--}}
-{{--                <div class="info">--}}
-{{--                    <a href="#" class="d-block">Alexander Pierce</a>--}}
-{{--                </div>--}}
-{{--            </div>--}}
+            {{--            <div class="user-panel mt-3 pb-3 mb-3 d-flex">--}}
+            {{--                <div class="image">--}}
+            {{--                    <img src="{{asset('vendor/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2"--}}
+            {{--                         alt="User Image">--}}
+            {{--                </div>--}}
+            {{--                <div class="info">--}}
+            {{--                    <a href="#" class="d-block">Alexander Pierce</a>--}}
+            {{--                </div>--}}
+            {{--            </div>--}}
 
             <!-- SidebarSearch Form -->
             <div class="form-inline">
@@ -183,8 +183,17 @@
                             <i class="nav-icon fas fa-syringe"></i>
                             <p>
                                 Gerenciar Suplementos
+                                <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+{{--                                {{route('medidasSuplemento.index')}}--}}
+                                <a href="" class="nav-link">
+                                    <p>Medidas</p>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
 
                     <li class="nav-item">
@@ -215,12 +224,21 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="{{ route('texto.index') }}" class="nav-link">
+                        <a href="{{ route('remedio.index') }}" class="nav-link">
                             <i class="nav-icon fas fa-pills"></i>
                             <p>
                                 Gerenciar remedios
+                                <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+{{--                                {{route('medidasRemedio.index')}}--}}
+                                <a href="" class="nav-link">
+                                    <p>Medidas</p>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </nav>

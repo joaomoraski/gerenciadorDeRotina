@@ -7,47 +7,70 @@
 
     <div class="card Mar25">
         <div class="card-header">
-            <h4 class="float-start" style="padding-top: 8px">Textos</h4>
-            <a href="{{ route('texto.create') }}" class="float-end">
+            <h4 class="float-start" style="padding-top: 8px">Remedios</h4>
+            <a href="{{ route('remedio.create') }}" class="float-end">
                 <button type="button" class="btn btn-success">Novo</button>
             </a>
         </div>
 
+        @error('erro')
+            <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h5><i class="icon fas fa-ban"></i> Atenção!</h5>
+                {{ $message }}
+            </div>
+        @enderror
+
         <div class="card-body table-responsive p-0">
             <table class="table table-hover text-break">
                 <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Conteúdo</th>
-                    <th>Criado em</th>
-                    <th>Atualizado em</th>
-                    <th>Editar</th>
-                    <th>Remover</th>
+                <tr class="text-center">
+                    <th>Nome</th>
+                    <th>Funcionalidade</th>
+                    <th>Quantidade tomar</th>
+                    <th>Estoque</th>
+                    <th>Receitado</th>
+                    <th>Quantas vezes ao dia</th>
+                    <th>Intervalo</th>
+                    <th>Tempo em dias</th>
+                    <th>Opções</th>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach($remedios as $key => $remedio)
-                    <tr>
-                        <th scope="row">{{ $texto['id'] }}</th>
-                        <td>{{ $texto['content'] }}</td>
-                        <td>{{ date('d/m/y', strtotime($texto['created_at'])) }}</td>
-                        <td>{{ date('d/m/y', strtotime($texto['updated_at'])) }}</td>
-                        <td><a href="{{ route('texto.edit', $texto['id']) }}"
-                               class="bi bi-pencil text-decoration-none"></a></td>
-                        <td>
-                            <form action="{{ route('texto.destroy', ['texto' => $texto->id]) }}"
-                                  method="post" id="form_{{ $texto['id'] }}">
-                                @method("DELETE")
-                                @csrf
-                                <a href="#" class="bi bi-trash3 text-decoration-none"
-                                   onclick="document.getElementById('form_{{ $texto['id'] }}').submit()"></a>
-                            </form>
+                    <tr class="text-center">
+                        <td style="font-weight: bold !important;" class="col-1">{{ $remedio['nome'] }}</td>
+                        <td class="col-4">{{ $remedio['funcionalidade'] }}</td>
+                        {{--                        <td>{{ date('d/m/y', strtotime($texto['created_at'])) }}</td>--}}
+                        {{--                        <td>{{ date('d/m/y', strtotime($texto['updated_at'])) }}</td>--}}
+                        <td>{{ $remedio['quantidadeTomar'] }}</td>
+                        <td>{{ $remedio['estoque'] }}</td>
+                        <td>{{ $remedio['isReceitado'] ? 'Sim' : 'Não' }}</td>
+                        <td>{{ $remedio['quantasVezes'] }}</td>
+                        <td>{{ $remedio['intervalo'] }}</td>
+                        <td>{{ $remedio['tempoEmDias'] }}</td>
+                        <td class="btn-group">
+                            <button type="button" class="btn btn-default dropdown-toggle dropdown-icon"
+                                    data-toggle="dropdown">
+                            </button>
+                            <div class="dropdown-menu text-center">
+                                <a href="{{ route('remedio.edit', $remedio['id']) }}"
+                                   class="bi bi-pencil text-black"> Alterar</a>
+                                <form action="{{ route('remedio.destroy', ['remedio' => $remedio->id]) }}"
+                                      method="post" id="form_{{ $remedio['id'] }}">
+                                    @method("DELETE")
+                                    @csrf
+                                    <a href="#" class="bi bi-trash3 text-black"
+                                       onclick="document.getElementById('form_{{ $remedio['id'] }}').submit()">
+                                        Excluir</a>
+                                </form>
+                            </div>
                         </td>
                     </tr>
                 @endforeach
                 </tbody>
             </table>
-            {{ $textos->onEachSide(2)->links() }}
+            {{ $remedios->onEachSide(2)->links() }}
         </div>
     </div>
 

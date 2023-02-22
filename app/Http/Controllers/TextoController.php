@@ -55,17 +55,6 @@ class TextoController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param $id
-     * @return Application|Factory|View
-     */
-    public function show(Texto $texto)
-    {
-        return view('texto.show', compact('texto'));
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param Texto $texto

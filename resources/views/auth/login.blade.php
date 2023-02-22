@@ -22,14 +22,15 @@
         </div>
         <div class="card-body">
             <p class="login-box-msg">Loga ai</p>
-{{--            @error('login')--}}
-{{--            <div class="alert alert-danger">{{ $message }}</div>--}}
-{{--            @enderror--}}
+            {{--            @error('login')--}}
+            {{--            <div class="alert alert-danger">{{ $message }}</div>--}}
+            {{--            @enderror--}}
 
             <form action="{{ route('login.authenticate') }}" method="POST">
                 @csrf
                 <div class="input-group mb-3">
-                    <input type="email" name="email" value="{{ old('email') }}" required class="form-control @error('login') is-invalid @enderror"
+                    <input type="email" name="email" value="{{ old('email') }}" required
+                           class="form-control @error('login') is-invalid @enderror"
                            placeholder="Email">
                     <div class="input-group-append">
                         <div class="input-group-text">
@@ -38,7 +39,8 @@
                     </div>
                 </div>
                 <div class="input-group mb-3">
-                    <input type="password" required name="password" value="{{ old('password') }}" class="form-control @error('login') is-invalid @enderror"
+                    <input type="password" required name="password" value="{{ old('password') }}"
+                           class="form-control @error('login') is-invalid @enderror"
                            placeholder="Senha">
                     <div class="input-group-append">
                         <div class="input-group-text">
@@ -89,6 +91,14 @@
             showConfirmButton: false,
             timer: 3000
         });
+        @error('login')
+        // $('.swalDefaultError').click(function () {
+        Toast.fire({
+            icon: 'error',
+            title: '{{ $message }}'
+        })
+        // });
+        @enderror
         // $('.swalDefaultSuccess').click(function() {
         //     Toast.fire({
         //         icon: 'success',
@@ -101,14 +111,6 @@
         //         title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
         //     })
         // });
-        @error('login')
-        // $('.swalDefaultError').click(function () {
-            Toast.fire({
-                icon: 'error',
-                title: '{{ $message }}'
-            })
-        // });
-        @enderror
         // $('.swalDefaultWarning').click(function() {
         //     Toast.fire({
         //         icon: 'warning',

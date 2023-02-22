@@ -9,7 +9,7 @@ class Remedio extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nome', 'user_id', 'funcionalidaed', 'quantidadeTomar', 'estoque', 'isReceitado', 'quantasVezes', 'intervalo', 'tempoEmDias'];
+    protected $fillable = ['nome', 'user_id', 'funcionalidade', 'quantidadeTomar', 'estoque', 'isReceitado', 'quantasVezes', 'intervalo', 'tempoEmDias'];
     public function user() {
         return $this->belongsTo(User::class);
     }

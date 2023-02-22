@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateRemedioRequest;
 use App\Models\Remedio;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class RemedioController extends Controller
@@ -20,8 +22,8 @@ class RemedioController extends Controller
      */
     public function index()
     {
-        $remedios = Remedio::all()->where('user_id', '=', auth()->id());
-        dd($remedios->user->nome);
+        $remedios = Remedio::where('user_id', '=', auth()->id())->paginate(10);
+//        dd($remedios->get(0)->user->name); funciona
         return view('remedio.index', ['remedios' => $remedios]);
     }
 
@@ -31,7 +33,7 @@ class RemedioController extends Controller
      */
     public function create()
     {
-
+        return view('remedio.create');
     }
 
     /**
@@ -39,19 +41,12 @@ class RemedioController extends Controller
      *
      * @param Request $request
      */
-    public function store(Request $request)
+    public function store(CreateRemedioRequest $request)
     {
-
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param Remedio $remedio
-     */
-    public function show(Remedio $remedio)
-    {
-
+        $validated = $request->validated();
+        $validated['user_id'] = auth()->user()->id;
+        $remedio = Remedio::create($validated);
+        return redirect()->route('remedio.index');
     }
 
     /**
@@ -61,7 +56,12 @@ class RemedioController extends Controller
      */
     public function edit(Remedio $remedio)
     {
-
+        if (auth()->user()->id != $remedio->user->id) {
+            return back()->withErrors([
+                'erro' => 'Você não possuí permissão de editar este remedio!',
+            ]);
+        }
+        return view('remedio.edit', ['remedio' => $remedio]);
     }
 
     /**
@@ -70,9 +70,16 @@ class RemedioController extends Controller
      * @param Request $request
      * @param Remedio $remedio
      */
-    public function update(Request $request, Remedio $remedio)
+    public function update(CreateRemedioRequest $request, Remedio $remedio)
     {
-
+        if (auth()->user()->id != $remedio->user->id) {
+            return back()->withErrors([
+                'erro' => 'Você não possuí permissão de editar este remedio!',
+            ]);
+        }
+        $validated = $request->validated();
+        $remedio->update($validated);
+        return redirect()->route('remedio.index');
     }
 
     /**
@@ -82,5 +89,12 @@ class RemedioController extends Controller
      */
     public function destroy(Remedio $remedio)
     {
+        if (auth()->user()->id != $remedio->user->id) {
+            return back()->withErrors([
+                'erro' => 'Você não possuí permissão de excluir este remedio!',
+            ]);
+        }
+        $remedio->delete();
+        return redirect()->route("remedio.index");
     }
 }
