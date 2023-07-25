@@ -19,7 +19,6 @@ class AtividadeFactory extends Factory
             'quadrante' => $this->faker->numberBetween(1,4),
             'isConcluido' => $this->faker->boolean,
             'diasDaSemana' => $this->gerarDiasSemana(),
-            'dataLimite' => $this->faker->dateTimeBetween('now', '+30 days')
         ];
     }
 
@@ -28,19 +27,19 @@ class AtividadeFactory extends Factory
         $diasSemana = '';
         switch ($this->faker->numberBetween(1,5)) {
             case 1:
-                $diasSemana = 'Segunda-feira,Terça-feira,Quinta-feira,Sábado';
+                $diasSemana = '1,2,4,6';
                 break;
             case 2:
-                $diasSemana = 'Terça-feira,Quarta-feira,Sexta-feira,Sábado';
+                $diasSemana = '2,3,5,6';
                 break;
             case 3:
-                $diasSemana = 'Segunda-feira,Quarta-feira,Sexta-feira';
+                $diasSemana = '1,3,5';
                 break;
             case 4:
-                $diasSemana = 'Quarta-feira,Quinta-feira,Sexta-feira';
+                $diasSemana = '3,4,5';
                 break;
             case 5:
-                $diasSemana = 'Segunda-feira,Sábado';
+                $diasSemana = '1,6';
                 break;
         }
         return $diasSemana;

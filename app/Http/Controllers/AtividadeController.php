@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 class AtividadeController extends Controller
 {
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware('auth');
     }
 
@@ -21,8 +22,7 @@ class AtividadeController extends Controller
     {
         $atividade->isConcluido = !$atividade->isConcluido;
         $atividade->save();
-        return redirect()->route('atividade.geral');
-
+        return redirect()->route('atividade.geral')->with('sucesso', "Deu bom");
     }
 
     /**
@@ -32,12 +32,22 @@ class AtividadeController extends Controller
      */
     public function geral()
     {
-        $listaAtividades = array(
-            'quadrante1' => Atividade::where('user_id', '=', auth()->user()->id)->where('quadrante', '=', 1)->orderBy('isConcluido')->orderBy('ordem')->paginate(5),
-            'quadrante2' => Atividade::where('user_id', '=', auth()->user()->id)->where('quadrante', '=', 2)->orderBy('isConcluido')->orderBy('ordem')->paginate(5),
-            'quadrante3' => Atividade::where('user_id', '=', auth()->user()->id)->where('quadrante', '=', 3)->orderBy('isConcluido')->orderBy('ordem')->paginate(5),
-            'quadrante4' => Atividade::where('user_id', '=', auth()->user()->id)->where('quadrante', '=', 4)->orderBy('isConcluido')->orderBy('ordem')->paginate(5),
-        );
+        $diaDaSemanaAtual = strval(getdate()['wday']);
+        $quadrantes = [1, 2, 3, 4];
+
+        $listaAtividades = array();
+
+        foreach ($quadrantes as $quadrante) {
+            $atividades = Atividade::where('user_id', '=', auth()->user()->id)
+                ->where('quadrante', '=', $quadrante)
+                ->where('diasDaSemana', 'like', "%$diaDaSemanaAtual%")
+                ->where('excluidoEm', null)
+                ->orderBy('isConcluido')
+                ->orderBy('ordem')
+                ->paginate(5);
+
+            $listaAtividades["quadrante$quadrante"] = $atividades;
+        }
         return view('atividade.geral', ['listaAtividades' => $listaAtividades]);
     }
 
@@ -64,7 +74,7 @@ class AtividadeController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -75,7 +85,7 @@ class AtividadeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Atividade  $atividade
+     * @param \App\Models\Atividade $atividade
      * @return \Illuminate\Http\Response
      */
     public function show(Atividade $atividade)
@@ -86,7 +96,7 @@ class AtividadeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Atividade  $atividade
+     * @param \App\Models\Atividade $atividade
      * @return \Illuminate\Http\Response
      */
     public function edit(Atividade $atividade)
@@ -97,8 +107,8 @@ class AtividadeController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Atividade  $atividade
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Atividade $atividade
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Atividade $atividade)
@@ -109,11 +119,15 @@ class AtividadeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Atividade  $atividade
+     * @param \App\Models\Atividade $atividade
      * @return \Illuminate\Http\Response
      */
     public function destroy(Atividade $atividade)
     {
-        //
+        if ($atividade->user_id == auth()->user()->id) {
+            $atividade->excluidoEm = date('Y-m-d H:i:s');
+            $atividade->update(['excluidoEm' => $atividade->excluidoEm]);
+            return redirect()->route('atividade.geral')->with('exclusao', "apagou ai fiote");
+        }
     }
 }

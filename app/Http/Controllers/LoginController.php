@@ -60,7 +60,7 @@ class LoginController extends Controller
         }
 
         return back()->withErrors([
-            'login' => 'Não localizamos esse registro, verifique os dados!',
+            'erro' => 'Não localizamos esse registro, verifique os dados!',
         ]);
     }
 

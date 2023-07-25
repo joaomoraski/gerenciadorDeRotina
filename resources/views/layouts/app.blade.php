@@ -336,5 +336,6 @@
 <script src="{{asset('vendor/dist/js/demo.js')}}"></script>
 <script src="{{asset('vendor/dist/js/pages/dashboard.js')}}"></script>
 <script src="{{asset('vendor/plugins/sweetalert2/sweetalert2.min.js')}}"></script>
+@yield('scripts')
 </body>
 </html>

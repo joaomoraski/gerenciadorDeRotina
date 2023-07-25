@@ -22,7 +22,7 @@ class CreateAtividadesTable extends Migration
             $table->integer('ordem')->nullable(false)->default(1);
             $table->boolean('isConcluido')->nullable(false)->default(false);
             $table->text('diasDaSemana', 255);
-            $table->dateTime('dataLimite')->nullable(false);
+            $table->dateTime('excluidoEm')->nullable(true);
             $table->timestamps();
         });
     }

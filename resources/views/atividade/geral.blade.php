@@ -209,3 +209,28 @@
     <script src="{{ asset('vendor/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
     <script src="{{ asset('vendor/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
 @endsection
+@section('scripts')
+    <script>
+        $(function () {
+            var Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000
+            });
+            @if(Session::has('exclusao'))
+            Toast.fire({
+                icon: 'error',
+                title: '{{ session('exclusao') }}'
+            })
+            @endif
+
+            @if(Session::has('sucesso'))
+            Toast.fire({
+                icon: 'success',
+                title: '{{ session('sucesso') }}'
+            })
+            @endif
+        });
+    </script>
+@endsection
